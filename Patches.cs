@@ -158,13 +158,13 @@ namespace DeadLogger
         [HarmonyPatch(typeof(TeleportWorld), nameof(TeleportWorld.Teleport))]
         public static class TeleportTeleport
         {
-            private static void Postfix(TeleportWorld __instance, Humanoid human)
+            private static void Postfix(TeleportWorld __instance, Player player)
             {
 
                 if (!__instance.TargetFound()) return;
                 if (ZoneSystem.instance.GetGlobalKey("noportals")) return;
-                if (!human.IsTeleportable()) return;
-                if (!human.IsPlayer()) return;
+                if (!player.IsTeleportable()) return;
+                if (!player.IsPlayer()) return;
 
                 PlayerTeleportTo.PortalName = __instance.GetText();
             }
