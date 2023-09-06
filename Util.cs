@@ -29,8 +29,8 @@ namespace DeadLogger
             List<ZNet.PlayerInfo> playerInfoList = new List<ZNet.PlayerInfo>();
             ZNet.instance.GetOtherPublicPlayers(playerInfoList);
 
-            long peerId = __instance.m_nview.m_zdo.m_owner;
-            ZNet.PlayerInfo playerInfo = playerInfoList.FirstOrDefault(x => x.m_characterID.userID == peerId);
+            long peerId = __instance.m_nview.m_zdo.GetOwner();
+            ZNet.PlayerInfo playerInfo = playerInfoList.FirstOrDefault(x => x.m_characterID.UserID == peerId);
 
             string playerName = playerInfo.m_name;
 
